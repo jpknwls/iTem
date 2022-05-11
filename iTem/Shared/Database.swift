@@ -97,19 +97,27 @@ enum Database {
     
     func addTagToItem(tag: UUID, item: UUID) {
         Database.dataStack.perform(asynchronous: { transaction in
-            if let tag = transaction.fetchOne(From<Tag>(), Where<Tag>(getIDPredicate(id: tag))), 
-                item = transaction.fetchOne(From<Item>(), Where<Item>(getIDPredicate(id: item))) {
-                item.tags.insert(tag)
-            }
+            do {
+                if let tag = try transaction.fetchOne(From<Tag>(), Where<Tag>(getIDPredicate(id: tag))), 
+                    let item = try transaction.fetchOne(From<Item>(), Where<Item>(getIDPredicate(id: item))) {
+                        item.tags.insert(tag)
+                }
+            } catch(let error) {
+                
+            } 
         }, completion: { _ in })
     }
     
     func addItemToItem(this: UUID, to that: UUID) {
         Database.dataStack.perform(asynchronous: { transaction in
-            if let _this = transaction.fetchOne(From<Item>(), Where<Item>(getIDPredicate(id: this))), 
-                _that = transaction.fetchOne(From<Item>(), Where<Item>(getIDPredicate(id: that))) {
-                _that.children.append(_this)
-            }
+            do {
+                if let _this = try transaction.fetchOne(From<Item>(), Where<Item>(getIDPredicate(id: this))), 
+                    let _that = try transaction.fetchOne(From<Item>(), Where<Item>(getIDPredicate(id: that))) {
+                        _that.children.append(_this)
+                }
+            } catch(let error) {
+            
+            } 
         }, completion: { _ in })
     }
     
