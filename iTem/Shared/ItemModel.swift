@@ -26,7 +26,7 @@ class Item: CoreStoreObject {
     
     //relationships
     @Field.Relationship("children", inverse: \Tag.$backlinks)
-    var items: Set<Item>
+    var items: Array<Item>
     
     @Field.Relationship("backlinks", inverse: \Tag.$items)
     var backlinks: Set<Item>

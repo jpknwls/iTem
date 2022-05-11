@@ -11,7 +11,7 @@ class Tag: CoreStoreObject{
     @Field.Stored("hue")
     var hue: Double = 0
     
-    @Field.Stored("updated")
+    @Field.Stored("saturation")
     var saturation: Double = 0
     
     @Field.Stored("brightness")
@@ -20,6 +20,6 @@ class Tag: CoreStoreObject{
     @Field.Stored("id")
     var id: UUID = .init()
     
-    @Field.Relationship("tags", inverse: \Tag.$items)
-    var tags: Set<Tag>
+    @Field.Relationship("tags", inverse: \Item.$tags)
+    var items: Set<Item>
 }
