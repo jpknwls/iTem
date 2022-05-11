@@ -17,6 +17,28 @@
 		7D6E837A282B714B00297F2D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8350282B714100297F2D /* ContentView.swift */; };
 		7D6E837B282B714B00297F2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6E8351282B714B00297F2D /* Assets.xcassets */; };
 		7D6E837C282B714B00297F2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D6E8351282B714B00297F2D /* Assets.xcassets */; };
+		7D6E838C282B733C00297F2D /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E838B282B733B00297F2D /* Routes.swift */; };
+		7D6E838D282B733C00297F2D /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E838B282B733B00297F2D /* Routes.swift */; };
+		7D6E838F282B736000297F2D /* Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E838E282B736000297F2D /* Intents.swift */; };
+		7D6E8390282B736000297F2D /* Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E838E282B736000297F2D /* Intents.swift */; };
+		7D6E8392282B747500297F2D /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8391282B747500297F2D /* Services.swift */; };
+		7D6E8393282B747500297F2D /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8391282B747500297F2D /* Services.swift */; };
+		7D6E8395282B749A00297F2D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8394282B749A00297F2D /* State.swift */; };
+		7D6E8396282B749A00297F2D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E8394282B749A00297F2D /* State.swift */; };
+		7D6E8399282B753600297F2D /* ObservableStore in Frameworks */ = {isa = PBXBuildFile; productRef = 7D6E8398282B753600297F2D /* ObservableStore */; };
+		7D6E839C282B754E00297F2D /* CoreStore in Frameworks */ = {isa = PBXBuildFile; productRef = 7D6E839B282B754E00297F2D /* CoreStore */; };
+		7D6E839E282B75EF00297F2D /* AddItemDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E839D282B75EF00297F2D /* AddItemDialog.swift */; };
+		7D6E839F282B75EF00297F2D /* AddItemDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E839D282B75EF00297F2D /* AddItemDialog.swift */; };
+		7D6E83A1282B761100297F2D /* ConfirmDeleteDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E83A0282B761100297F2D /* ConfirmDeleteDialog.swift */; };
+		7D6E83A2282B761100297F2D /* ConfirmDeleteDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E83A0282B761100297F2D /* ConfirmDeleteDialog.swift */; };
+		7D6E83A4282B763C00297F2D /* FilterPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E83A3282B763C00297F2D /* FilterPicker.swift */; };
+		7D6E83A5282B763C00297F2D /* FilterPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E83A3282B763C00297F2D /* FilterPicker.swift */; };
+		7D6E83A7282B764500297F2D /* ItemPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E83A6282B764500297F2D /* ItemPicker.swift */; };
+		7D6E83A8282B764500297F2D /* ItemPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E83A6282B764500297F2D /* ItemPicker.swift */; };
+		7D6E83AA282B767300297F2D /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E83A9282B767300297F2D /* ItemList.swift */; };
+		7D6E83AB282B767300297F2D /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E83A9282B767300297F2D /* ItemList.swift */; };
+		7D6E83AD282B769500297F2D /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E83AC282B769500297F2D /* ItemDetail.swift */; };
+		7D6E83AE282B769500297F2D /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6E83AC282B769500297F2D /* ItemDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +71,16 @@
 		7D6E836F282B714B00297F2D /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6E8373282B714B00297F2D /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		7D6E8375282B714B00297F2D /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		7D6E838B282B733B00297F2D /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		7D6E838E282B736000297F2D /* Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intents.swift; sourceTree = "<group>"; };
+		7D6E8391282B747500297F2D /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		7D6E8394282B749A00297F2D /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		7D6E839D282B75EF00297F2D /* AddItemDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemDialog.swift; sourceTree = "<group>"; };
+		7D6E83A0282B761100297F2D /* ConfirmDeleteDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeleteDialog.swift; sourceTree = "<group>"; };
+		7D6E83A3282B763C00297F2D /* FilterPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPicker.swift; sourceTree = "<group>"; };
+		7D6E83A6282B764500297F2D /* ItemPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPicker.swift; sourceTree = "<group>"; };
+		7D6E83A9282B767300297F2D /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
+		7D6E83AC282B769500297F2D /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D6E8399282B753600297F2D /* ObservableStore in Frameworks */,
+				7D6E839C282B754E00297F2D /* CoreStore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +132,17 @@
 			isa = PBXGroup;
 			children = (
 				7D6E834F282B714100297F2D /* iTemApp.swift */,
+				7D6E838E282B736000297F2D /* Intents.swift */,
+				7D6E838B282B733B00297F2D /* Routes.swift */,
+				7D6E8391282B747500297F2D /* Services.swift */,
+				7D6E8394282B749A00297F2D /* State.swift */,
 				7D6E8350282B714100297F2D /* ContentView.swift */,
+				7D6E839D282B75EF00297F2D /* AddItemDialog.swift */,
+				7D6E83A0282B761100297F2D /* ConfirmDeleteDialog.swift */,
+				7D6E83A3282B763C00297F2D /* FilterPicker.swift */,
+				7D6E83A6282B764500297F2D /* ItemPicker.swift */,
+				7D6E83A9282B767300297F2D /* ItemList.swift */,
+				7D6E83AC282B769500297F2D /* ItemDetail.swift */,
 				7D6E8351282B714B00297F2D /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -157,6 +201,10 @@
 			dependencies = (
 			);
 			name = "iTem (iOS)";
+			packageProductDependencies = (
+				7D6E8398282B753600297F2D /* ObservableStore */,
+				7D6E839B282B754E00297F2D /* CoreStore */,
+			);
 			productName = "iTem (iOS)";
 			productReference = 7D6E8356282B714B00297F2D /* iTem.app */;
 			productType = "com.apple.product-type.application";
@@ -249,6 +297,10 @@
 				Base,
 			);
 			mainGroup = 7D6E8349282B714000297F2D;
+			packageReferences = (
+				7D6E8397282B753600297F2D /* XCRemoteSwiftPackageReference "ObservableStore" */,
+				7D6E839A282B754E00297F2D /* XCRemoteSwiftPackageReference "CoreStore" */,
+			);
 			productRefGroup = 7D6E8357282B714B00297F2D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -299,8 +351,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D6E838C282B733C00297F2D /* Routes.swift in Sources */,
+				7D6E83AD282B769500297F2D /* ItemDetail.swift in Sources */,
+				7D6E838F282B736000297F2D /* Intents.swift in Sources */,
 				7D6E8379282B714B00297F2D /* ContentView.swift in Sources */,
 				7D6E8377282B714B00297F2D /* iTemApp.swift in Sources */,
+				7D6E83A1282B761100297F2D /* ConfirmDeleteDialog.swift in Sources */,
+				7D6E839E282B75EF00297F2D /* AddItemDialog.swift in Sources */,
+				7D6E83A7282B764500297F2D /* ItemPicker.swift in Sources */,
+				7D6E8392282B747500297F2D /* Services.swift in Sources */,
+				7D6E83AA282B767300297F2D /* ItemList.swift in Sources */,
+				7D6E83A4282B763C00297F2D /* FilterPicker.swift in Sources */,
+				7D6E8395282B749A00297F2D /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,8 +370,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D6E838D282B733C00297F2D /* Routes.swift in Sources */,
+				7D6E83AE282B769500297F2D /* ItemDetail.swift in Sources */,
+				7D6E8390282B736000297F2D /* Intents.swift in Sources */,
 				7D6E837A282B714B00297F2D /* ContentView.swift in Sources */,
 				7D6E8378282B714B00297F2D /* iTemApp.swift in Sources */,
+				7D6E83A2282B761100297F2D /* ConfirmDeleteDialog.swift in Sources */,
+				7D6E839F282B75EF00297F2D /* AddItemDialog.swift in Sources */,
+				7D6E83A8282B764500297F2D /* ItemPicker.swift in Sources */,
+				7D6E8393282B747500297F2D /* Services.swift in Sources */,
+				7D6E83AB282B767300297F2D /* ItemList.swift in Sources */,
+				7D6E83A5282B763C00297F2D /* FilterPicker.swift in Sources */,
+				7D6E8396282B749A00297F2D /* State.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +773,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7D6E8397282B753600297F2D /* XCRemoteSwiftPackageReference "ObservableStore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/subconsciousnetwork/ObservableStore";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+		7D6E839A282B754E00297F2D /* XCRemoteSwiftPackageReference "CoreStore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnEstropia/CoreStore";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7D6E8398282B753600297F2D /* ObservableStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D6E8397282B753600297F2D /* XCRemoteSwiftPackageReference "ObservableStore" */;
+			productName = ObservableStore;
+		};
+		7D6E839B282B754E00297F2D /* CoreStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D6E839A282B754E00297F2D /* XCRemoteSwiftPackageReference "CoreStore" */;
+			productName = CoreStore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7D6E834A282B714000297F2D /* Project object */;
 }
