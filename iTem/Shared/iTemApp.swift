@@ -20,6 +20,18 @@
     - Intents
         - enum Intents
     
+        
+        - db
+            - create(
+                - item
+                - tag
+            - delete(ids)
+            - update
+                - item
+                    - text
+                -  tag
+    
+    
     - View
         - navBar
         - toolBar
