@@ -7,8 +7,3 @@
 
 import Foundation
 
-enum Routes {
-    case root
-    case branch(UUID)
-}
-

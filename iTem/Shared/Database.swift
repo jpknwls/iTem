@@ -1,5 +1,6 @@
 import Foundation
 import CoreStore
+import SwiftUI
 
 enum Database {
     static let dataStack: DataStack = {
@@ -26,8 +27,26 @@ enum Database {
     }()
     
     //// delete
-    func delete(ids: Set<NSManagedObjectID>) {
+    func deleteItems(incomingIDs: Set<UUID>) {
         Database.dataStack.perform(asynchronous: { transaction in
+            var ids: [Item.ObjectID] = []
+            for id in incomingIDs {
+                if let object = try transaction.fetchOne(From<Item>(), Where<Item>(getIDPredicate(id: id))) {
+                    ids.append(object.objectID())
+                }
+            }
+            transaction.delete(objectIDs: ids)
+        }, completion: {_ in })
+    }
+    
+    func deleteTags(incomingIDs: Set<UUID>) {
+        Database.dataStack.perform(asynchronous: { transaction in
+            var ids: [Item.ObjectID] = []
+            for id in incomingIDs {
+                if let object = try transaction.fetchOne(From<Tag>(), Where<Tag>(getIDPredicate(id: id))) {
+                    ids.append(object.objectID())
+                }
+            }
             transaction.delete(objectIDs: ids)
         }, completion: {_ in })
     }
@@ -85,7 +104,7 @@ enum Database {
                 tag.emoji = emoji
             }
             if let color = color {
-                let (h, s, b) = color.toHSB()
+                let (h, s, b) = color.hsb()
                 tag.hue = h
                 tag.saturation = s
                 tag.brightness = b

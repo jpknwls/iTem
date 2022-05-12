@@ -13,15 +13,22 @@ struct State: Equatable {
 
 }
 
-extension AppState {
+extension State {
     /// State update function
     static func update(
         state: State,
         action: Intents,
         environment: Services
-    ) -> Update<AppState, Intents> {
+    ) -> Update<State, Intents> {
         switch action {
             //
         }
     }
 }
+
+enum Routes {
+    case root
+    case branch(UUID)
+}
+
+

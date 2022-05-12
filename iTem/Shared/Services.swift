@@ -10,3 +10,18 @@ import Foundation
 struct Services {
     
 }
+
+
+/*
+    Database
+        - createTag
+        - deleteTag
+        - addTagToItem
+        - createItem
+        - deleteItem
+        - addItemToItem
+        -
+ 
+    Device
+        -
+ */

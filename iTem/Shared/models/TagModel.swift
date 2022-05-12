@@ -1,5 +1,6 @@
 import Foundation
 import CoreStore
+import SwiftUI
 
 class Tag: CoreStoreObject{  
    @Field.Stored("name")
@@ -22,4 +23,16 @@ class Tag: CoreStoreObject{
 
    @Field.Relationship("tags", inverse: \.$tags)
    var items: Set<Item>
+}
+
+extension Color {
+    func hsb() -> (Double, Double, Double) {
+        var hue: CGFloat = 0.0
+        var saturation: CGFloat = 0.0
+        var brightness: CGFloat = 0.0
+        var alpha: CGFloat = 0.0
+
+        UIColor(self).getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        return (Double(hue), Double(saturation), Double(brightness))
+    }
 }

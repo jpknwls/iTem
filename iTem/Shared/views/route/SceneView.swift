@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SceneView: View {
     var body: some View {
         EmptyView()
         
