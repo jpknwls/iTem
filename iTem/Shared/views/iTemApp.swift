@@ -20,7 +20,12 @@
     - Intents
         - enum Intents
     
-        
+        - state
+            - search/sort/filter
+            - navigation
+                - route
+                - mode
+                - dialog/sheet
         - db
             - create(
                 - item
@@ -55,7 +60,26 @@ import SwiftUI
 struct iTemApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SceneView()
         }
     }
 }
+
+/*
+ AppView
+     SceneView
+         NavigationView
+         ContentView
+             - ListView
+             - [DetailView]
+         ControlView
+            FilterPicker
+            ItemPicker
+            
+            ConfirmDeleteDialog
+            AddItemDialog
+    
+        
+
+    
+ */

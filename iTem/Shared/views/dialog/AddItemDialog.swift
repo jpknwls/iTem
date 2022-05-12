@@ -9,5 +9,6 @@ import Foundation
 import SwiftUI
 
 struct AddItemDialog: View {
+    
     var body: some View { EmptyView() }
 }

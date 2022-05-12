@@ -2,7 +2,7 @@ import Foundation
 import CoreStore
 import SwiftUI
 
-enum Database {
+struct Database {
     static let dataStack: DataStack = {
         let dataStack = DataStack(
             CoreStoreSchema(

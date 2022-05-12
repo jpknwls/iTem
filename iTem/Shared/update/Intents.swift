@@ -17,6 +17,24 @@ enum StateIntent {
         
 }
 
+/*
+    search
+        toggleView(closed, open)
+        binding
+
+    sort
+        binding
+
+    filter
+        toggleView(closed, open, expanded)
+        add
+        remove
+ 
+    route
+        pop
+        back
+ */
+
 enum DatabaseIntent {
     case create(DatabaseCreate)
     case delete(DatabaseDelete)
@@ -34,8 +52,8 @@ enum DatabaseDelete {
 }
 
 enum DatabaseUpdate {
-    case tag(TagUpdate)
-    case item(ItemUpdate)
+    case tag(UUID, TagUpdate)
+    case item(UUID, ItemUpdate)
 }
 
 enum TagUpdate {
@@ -47,14 +65,3 @@ enum TagUpdate {
 enum ItemUpdate {
     case text(String)
 }
-/*
- - create(
-     - item
-     - tag
- - delete(ids)
- - update
-     - item
-         - text
-     -  tag
-
- */

@@ -43,6 +43,10 @@
 		7D9419B0282CBD350029F4EB /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419AB282CBD350029F4EB /* ItemModel.swift */; };
 		7D9419B1282CBD350029F4EB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419AC282CBD350029F4EB /* Database.swift */; };
 		7D9419B2282CBD350029F4EB /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419AC282CBD350029F4EB /* Database.swift */; };
+		7D9419BB282CD6260029F4EB /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419BA282CD6260029F4EB /* NavigationBar.swift */; };
+		7D9419BC282CD6260029F4EB /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419BA282CD6260029F4EB /* NavigationBar.swift */; };
+		7D9419BE282CD6550029F4EB /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419BD282CD6550029F4EB /* ControlBar.swift */; };
+		7D9419BF282CD6550029F4EB /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419BD282CD6550029F4EB /* ControlBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +91,8 @@
 		7D9419AA282CBD350029F4EB /* TagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		7D9419AB282CBD350029F4EB /* ItemModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		7D9419AC282CBD350029F4EB /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		7D9419BA282CD6260029F4EB /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		7D9419BD282CD6550029F4EB /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				7D6E8350282B714100297F2D /* SceneView.swift */,
+				7D9419BA282CD6260029F4EB /* NavigationBar.swift */,
+				7D9419BD282CD6550029F4EB /* ControlBar.swift */,
 				7D6E83A9282B767300297F2D /* ItemList.swift */,
 				7D6E83AC282B769500297F2D /* ItemDetail.swift */,
 			);
@@ -223,8 +231,8 @@
 		7D9419B7282CBE5D0029F4EB /* services */ = {
 			isa = PBXGroup;
 			children = (
-				7D6E8391282B747500297F2D /* Services.swift */,
 				7D9419AC282CBD350029F4EB /* Database.swift */,
+				7D6E8391282B747500297F2D /* Services.swift */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -416,10 +424,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D6E83AD282B769500297F2D /* ItemDetail.swift in Sources */,
+				7D9419BE282CD6550029F4EB /* ControlBar.swift in Sources */,
 				7D6E838F282B736000297F2D /* Intents.swift in Sources */,
 				7D9419B1282CBD350029F4EB /* Database.swift in Sources */,
 				7D9419AD282CBD350029F4EB /* TagModel.swift in Sources */,
 				7D6E8379282B714B00297F2D /* SceneView.swift in Sources */,
+				7D9419BB282CD6260029F4EB /* NavigationBar.swift in Sources */,
 				7D6E8377282B714B00297F2D /* iTemApp.swift in Sources */,
 				7D6E83A1282B761100297F2D /* ConfirmDeleteDialog.swift in Sources */,
 				7D6E839E282B75EF00297F2D /* AddItemDialog.swift in Sources */,
@@ -437,10 +447,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D6E83AE282B769500297F2D /* ItemDetail.swift in Sources */,
+				7D9419BF282CD6550029F4EB /* ControlBar.swift in Sources */,
 				7D6E8390282B736000297F2D /* Intents.swift in Sources */,
 				7D9419B2282CBD350029F4EB /* Database.swift in Sources */,
 				7D9419AE282CBD350029F4EB /* TagModel.swift in Sources */,
 				7D6E837A282B714B00297F2D /* SceneView.swift in Sources */,
+				7D9419BC282CD6260029F4EB /* NavigationBar.swift in Sources */,
 				7D6E8378282B714B00297F2D /* iTemApp.swift in Sources */,
 				7D6E83A2282B761100297F2D /* ConfirmDeleteDialog.swift in Sources */,
 				7D6E839F282B75EF00297F2D /* AddItemDialog.swift in Sources */,
