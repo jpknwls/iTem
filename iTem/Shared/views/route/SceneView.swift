@@ -28,7 +28,9 @@ struct SceneView: View {
                               route: store.state.currentRoute,
                               tabs: store.state.tabs,
                               goTo: {id in },
-                              goHome: {})
+                              goHome: {},
+                              toggleNavExpanded: {}
+                )
                 
                 
                 switch store.state.currentRoute {
@@ -53,7 +55,12 @@ struct SceneView: View {
                 Spacer()
             }
             
-            ControlBar()
+            VStack {
+            ControlBar(search: <#Binding<String>#>,
+                       sort: <#Binding<Sort>#>,
+                       filter: <#Binding<Set<UUID>>#>,
+                       toggleEdit: <#() -> ()#>)
+            }
         }
     }
     

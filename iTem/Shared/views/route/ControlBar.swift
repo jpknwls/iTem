@@ -28,14 +28,21 @@ struct ControlBar: View {
                 
             }
             if searchShowing {
-                TextField("Search...", text: $search)
+                SearchField(text: $search)
             }
             HStack {
                 // search
-                Text("Search")
-                    .onTapGesture {
-                        searchShowing.toggle()
-                    }
+                IconButton {
+                    Image(systemName: "magnifyingglass")
+                } action: {
+                    searchShowing.toggle()
+                }
+                IconButton {
+                    Text("Filter")
+                    //Image(systemName: "magnifyingglass")
+                } action: {
+                    filterShowing.toggle()
+                }
                 // sort
                 Menu {
                     
@@ -43,17 +50,21 @@ struct ControlBar: View {
                     Text("Sort")
                 }
                 // filter
-                
-                Text("Filter")
-                    .onTapGesture {
-                        filterShowing.toggle()
-                    }
                 // edit
-                Text("Edit")
-                    .onTapGesture {
-                        toggleEdit()
-                    }
+                IconButton {
+                    Text("Edit")
+                    //Image(systemName: "pencil.and.box")
+                } action: {
+                    toggleEdit()
+                }
+                
                 // add
+                IconButton {
+                    Text("Add")
+                    //Image(systemName: "pencil.and.box")
+                } action: {
+                    
+                }
                 
             }
             .font(.caption)

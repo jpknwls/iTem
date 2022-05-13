@@ -40,3 +40,21 @@ struct ItemList: View {
         EmptyView()
     }
 }
+
+struct ItemListView: View {
+    @ListState
+    var items: ListSnapshot<Item>
+
+    var body: some View {
+        List {
+                ForEach(objectIn: items) { item in
+                        // ...
+                    Text(item.text ?? "")
+                }
+            }
+        items.pu
+        
+    
+        .animation(.default)
+    }
+}

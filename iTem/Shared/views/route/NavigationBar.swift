@@ -14,8 +14,8 @@ struct NavigationBar: View {
         data
         - routes
      */
-    let route: Route
-    let tabs: [Route]
+    let route: TabState
+    let tabs: [TabState]
     
     /*
         events
@@ -24,19 +24,32 @@ struct NavigationBar: View {
     
     let goTo: (UUID) -> ()
     let goHome: () -> ()
+    let toggleNavExpanded: () -> ()
     
-    @State var expanded: Bool = false
     var body: some View {
         VStack {
             HStack {
                 Text("Home")
+                IconButton {
+                    Image(systemName: "")
+                } action: {
+                    goHome()
+                }
+                ForEach(tabs, id: \.self) { tab in
+                    
+                }
                     //.border(isHome ? : )
                     //.shadow(isHome ? : )
                 // homeButton.highlighted(route == .list)
                 // forEach(tabs) { navCard(tab).highlighted(isAt(tab)) }
-            }
-            if expanded {
-                    
+                
+                Spacer()
+                IconButton {
+                    Image(systemName: "")
+                } action: {
+                    toggleNavExpanded()
+                }
+
             }
         }
     }

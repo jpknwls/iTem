@@ -47,6 +47,10 @@
 		7D9419BC282CD6260029F4EB /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419BA282CD6260029F4EB /* NavigationBar.swift */; };
 		7D9419BE282CD6550029F4EB /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419BD282CD6550029F4EB /* ControlBar.swift */; };
 		7D9419BF282CD6550029F4EB /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419BD282CD6550029F4EB /* ControlBar.swift */; };
+		7D9419C4282DD4480029F4EB /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419C3282DD4480029F4EB /* ToDo.swift */; };
+		7D9419C5282DD4480029F4EB /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419C3282DD4480029F4EB /* ToDo.swift */; };
+		7D9419C7282DE9B80029F4EB /* EditBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419C6282DE9B70029F4EB /* EditBar.swift */; };
+		7D9419C8282DE9B80029F4EB /* EditBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9419C6282DE9B70029F4EB /* EditBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +97,8 @@
 		7D9419AC282CBD350029F4EB /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		7D9419BA282CD6260029F4EB /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		7D9419BD282CD6550029F4EB /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
+		7D9419C3282DD4480029F4EB /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		7D9419C6282DE9B70029F4EB /* EditBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +154,7 @@
 				7D9419B6282CBE4C0029F4EB /* update */,
 				7D9419B9282CBE950029F4EB /* views */,
 				7D6E8351282B714B00297F2D /* Assets.xcassets */,
+				7D9419C3282DD4480029F4EB /* ToDo.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -213,6 +220,7 @@
 				7D6E8350282B714100297F2D /* SceneView.swift */,
 				7D9419BA282CD6260029F4EB /* NavigationBar.swift */,
 				7D9419BD282CD6550029F4EB /* ControlBar.swift */,
+				7D9419C6282DE9B70029F4EB /* EditBar.swift */,
 				7D6E83A9282B767300297F2D /* ItemList.swift */,
 				7D6E83AC282B769500297F2D /* ItemDetail.swift */,
 			);
@@ -424,6 +432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D6E83AD282B769500297F2D /* ItemDetail.swift in Sources */,
+				7D9419C7282DE9B80029F4EB /* EditBar.swift in Sources */,
 				7D9419BE282CD6550029F4EB /* ControlBar.swift in Sources */,
 				7D6E838F282B736000297F2D /* Intents.swift in Sources */,
 				7D9419B1282CBD350029F4EB /* Database.swift in Sources */,
@@ -433,6 +442,7 @@
 				7D6E8377282B714B00297F2D /* iTemApp.swift in Sources */,
 				7D6E83A1282B761100297F2D /* ConfirmDeleteDialog.swift in Sources */,
 				7D6E839E282B75EF00297F2D /* AddItemDialog.swift in Sources */,
+				7D9419C4282DD4480029F4EB /* ToDo.swift in Sources */,
 				7D6E83A7282B764500297F2D /* ItemPicker.swift in Sources */,
 				7D6E8392282B747500297F2D /* Services.swift in Sources */,
 				7D6E83AA282B767300297F2D /* ItemList.swift in Sources */,
@@ -447,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D6E83AE282B769500297F2D /* ItemDetail.swift in Sources */,
+				7D9419C8282DE9B80029F4EB /* EditBar.swift in Sources */,
 				7D9419BF282CD6550029F4EB /* ControlBar.swift in Sources */,
 				7D6E8390282B736000297F2D /* Intents.swift in Sources */,
 				7D9419B2282CBD350029F4EB /* Database.swift in Sources */,
@@ -456,6 +467,7 @@
 				7D6E8378282B714B00297F2D /* iTemApp.swift in Sources */,
 				7D6E83A2282B761100297F2D /* ConfirmDeleteDialog.swift in Sources */,
 				7D6E839F282B75EF00297F2D /* AddItemDialog.swift in Sources */,
+				7D9419C5282DD4480029F4EB /* ToDo.swift in Sources */,
 				7D6E83A8282B764500297F2D /* ItemPicker.swift in Sources */,
 				7D6E8393282B747500297F2D /* Services.swift in Sources */,
 				7D6E83AB282B767300297F2D /* ItemList.swift in Sources */,

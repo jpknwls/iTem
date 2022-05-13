@@ -1,6 +1,6 @@
 import Foundation
 import CoreStore
-
+import CoreData
 
 class Item: CoreStoreObject {
 
