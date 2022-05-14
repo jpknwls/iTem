@@ -14,26 +14,34 @@ enum Intents {
 }
 
 enum StateIntent {
-        
+    case null
+    case select(SelectionAction)
+    case toggle(ToggleDestination)
+    case update(UpdateDestination)
+    case navigate(NavigationDestination)
 }
 
-/*
-    search
-        toggleView(closed, open)
-        binding
+enum UpdateDestination {
+    case search(String)
+    case sort(Sort)
+}
 
-    sort
-        binding
+enum ToggleDestination {
+    case search
+    case edit
+    case filter
+    
+}
 
-    filter
-        toggleView(closed, open, expanded)
-        add
-        remove
- 
-    route
-        pop
-        back
- */
+enum SelectionAction {
+    case all
+    case clear
+}
+
+enum NavigationDestination {
+    case back
+    case to(UUID) // or Item?
+}
 
 enum DatabaseIntent {
     case create(DatabaseCreate)

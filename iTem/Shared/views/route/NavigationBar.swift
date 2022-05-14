@@ -14,8 +14,8 @@ struct NavigationBar: View {
         data
         - routes
      */
-    let route: TabState
-    let tabs: [TabState]
+    let route: Route
+    let tabs: [DetailContent] // could just be an array of strings
     
     /*
         events
@@ -29,13 +29,14 @@ struct NavigationBar: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Home")
-                IconButton {
-                    Image(systemName: "")
-                } action: {
-                    goHome()
+                if route != .list {
+                    IconButton {
+                        Image(systemName: Icon.home)
+                    } action: {
+                        goHome()
+                    }
                 }
-                ForEach(tabs, id: \.self) { tab in
+                ForEach(tabs, id: \.id) { tab in
                     
                 }
                     //.border(isHome ? : )
@@ -45,12 +46,13 @@ struct NavigationBar: View {
                 
                 Spacer()
                 IconButton {
-                    Image(systemName: "")
+                    Image(systemName: Icon.expand)
                 } action: {
                     toggleNavExpanded()
                 }
 
             }
+            .padding()
         }
     }
  

@@ -12,62 +12,65 @@ import SwiftUI
 struct ControlBar: View {
     
 
-    @Binding var search: String
+
     @Binding var sort: Sort
-    @Binding var filter: Set<UUID>
+    @Binding var editing: Bool
+    @Binding var searchShowing: Bool
+    @Binding var filterShowing: Bool
     
-    
-    let toggleEdit: () -> ()
-    
-    @State var searchShowing: Bool = false
-    @State var filterShowing: Bool = false
+    // add action
     
     var body: some View {
         VStack {
-            if filterShowing {
-                
-            }
-            if searchShowing {
-                SearchField(text: $search)
-            }
             HStack {
                 // search
                 IconButton {
-                    Image(systemName: "magnifyingglass")
+                    Image(systemName: Icon.search)
                 } action: {
                     searchShowing.toggle()
                 }
                 IconButton {
-                    Text("Filter")
-                    //Image(systemName: "magnifyingglass")
+                    Image(systemName: Icon.filter)
                 } action: {
                     filterShowing.toggle()
                 }
                 // sort
                 Menu {
+                    Picker(selection: $sort, label: Text("Sorting")) {
+                        Text("None").tag(Sort.none)
+                        Text("Youngest").tag(Sort.youngest)
+                        Text("Oldest").tag(Sort.oldest)
+                        Text("Alphabetical").tag(Sort.a2z)
+                        Text("Reverse Alphabetical").tag(Sort.z2a)
+                        }
                     
                 } label: {
-                    Text("Sort")
+                    Image(systemName: Icon.sort)
+                        .frame(height: 40)
+                        .padding()
+                        .foregroundColor(.green)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                                        .foregroundColor(.green)
+                                        .opacity(0.6)
+                                        .blur(radius: 2.0))
                 }
                 // filter
                 // edit
                 IconButton {
-                    Text("Edit")
-                    //Image(systemName: "pencil.and.box")
+                    Image(systemName: Icon.edit)
                 } action: {
-                    toggleEdit()
+                    editing.toggle()
                 }
                 
                 // add
                 IconButton {
-                    Text("Add")
-                    //Image(systemName: "pencil.and.box")
+                    Image(systemName: Icon.add)
                 } action: {
                     
                 }
                 
             }
-            .font(.caption)
+            .font(.title)
             
         }
         

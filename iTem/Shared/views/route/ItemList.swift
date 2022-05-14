@@ -15,24 +15,15 @@ struct ItemList: View {
         data
         - routes
      */
-    let mode: Mode
-    let search: String
-    let sort: Sort
-    let filter: Set<UUID>
-    
-    
+    let state: ListContent
+
     /*
         events
         -
      */
     
     var body: some View {
-        switch mode {
-        case .idle: EmptyView()
-        case .alert(let route): EmptyView()
-        case .sheet(let route): EmptyView()
-        case .editing: EmptyView()
-        }
+       EmptyView()
         
     }
     
@@ -52,7 +43,6 @@ struct ItemListView: View {
                     Text(item.text ?? "")
                 }
             }
-        items.pu
         
     
         .animation(.default)

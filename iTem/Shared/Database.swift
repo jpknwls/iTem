@@ -151,14 +151,14 @@ struct Database {
 // list and detail publishers
 extension Database {
     func getItemListPublisher() -> ListPublisher<Item> {
-        let listPublisher = Database.dataStack.listPublisher(
+        return Database.dataStack.listPublisher(
             From<Item>()
                 // .sectionBy(\.age") { "Age \($0)" } // sections are optional
                 //.where(\.title == "Engineer")
                 // .orderBy(.ascending(\.lastName))
         )
         
-        listPublisher.quer
+        //listPublisher.quer
     }
   
     

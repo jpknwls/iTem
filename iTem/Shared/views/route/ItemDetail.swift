@@ -14,12 +14,7 @@ struct ItemDetail: View {
         data
         -
      */
-    
-    let id: UUID
-    let mode: Mode
-    let search: String
-    let sort: Sort
-    let filter: Set<UUID>
+    let state: DetailContent
     
     /*
         events

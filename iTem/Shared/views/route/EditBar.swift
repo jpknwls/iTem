@@ -23,8 +23,7 @@ struct EditBar: View {
         HStack {
             // search
             IconButton {
-                Text("Delete")
-                //Image(systemName: "trash")
+                Image(systemName: Icon.delete)
                     // .badge { Text(selectionCount) }
             } action: {
                 deleteConfirm.toggle()

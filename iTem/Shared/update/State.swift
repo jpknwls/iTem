@@ -24,25 +24,22 @@ enum Sort {
     
  
  */
-struct StateSnapshot: Equatable {
-    var search: String = ""
-    var sort: Sort = .none
-    var filter: Set<UUID> = []
-    
-    var currentRoute: Route = .list
-    var tabs: [Route] = []
-    
-    
-    var mode: Mode = .idle
+
+
+struct SceneSnapshot: Equatable {
+    var focus: Route = .list
+    var tabs: [DetailContent] = []
+    var list: ListContent =  ListContent()
 }
 
-extension StateSnapshot {
+
+extension SceneSnapshot {
     /// State update function
     static func update(
-        state: StateSnapshot,
+        state: SceneSnapshot,
         action: Intents,
         environment: Services
-    ) -> Update<StateSnapshot, Intents> {
+    ) -> Update<SceneSnapshot, Intents> {
         switch action {
             //
         case .db(let action):
@@ -78,30 +75,58 @@ extension StateSnapshot {
             }
         case .state(let action):
             switch action {
-            
+            case .null: break
+            case .navigate(let to):
+                switch to {
+                case .back: break
+                case .to(let id): break
+                }
+            case .select(let action):
+                switch action {
+                case .all: break
+                case .clear: break
+                }
+                
+            case .toggle(let destination):
+                var copy = state
+
+                switch state.focus {
+                case .list:
+                    switch destination {
+                    case .search: copy.list.searching.toggle()
+                    case .edit: copy.list.editing.toggle()
+                    case .filter: copy.list.filtering.toggle()
+                    }
+                case .detail(let idx):
+                    switch destination {
+                    case .search: copy.tabs[idx].searching.toggle()
+                    case .edit: copy.tabs[idx].editing.toggle()
+                    case .filter: copy.tabs[idx].filtering.toggle()
+                    }
+                }
+                return Update(state: copy)
+
+                
+            case .update(let destination):
+                var copy = state
+                switch state.focus {
+                case .list:
+                    switch destination {
+                    case .search(let newSearch): copy.list.search = newSearch
+                    case .sort(let newSort): copy.list.sort = newSort
+                    }
+                    
+                case .detail(let idx):
+                    switch destination {
+                    case .search(let newSearch): copy.tabs[idx].search = newSearch
+                    case .sort(let newSort): copy.tabs[idx].sort = newSort
+                    }
+                }
+                return Update(state: copy)
             }
         }
         return Update(state: state)
     }
-}
-
-enum Route: Equatable {
-    case list
-    case detail(UUID)
-}
-
-enum Mode: Equatable {
-    case alert(AlertRoute)
-    case sheet(SheetRoute)
-    case idle
-    case editing
-}
-enum SheetRoute: Equatable {
-    
-}
-
-enum AlertRoute: Equatable {
-        
 }
 
 
