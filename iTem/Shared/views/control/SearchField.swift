@@ -18,7 +18,5 @@ struct SearchField: View {
                             .foregroundColor(.green)
                             .opacity(0.3)
                             .blur(radius: 1.0))
-
     }
 }
-

@@ -9,56 +9,143 @@ import SwiftUI
 import ObservableStore
 
 /*
-    SceneView
-        NavigationView
-        ContentView
-            - ListView
-            - [DetailView]
-        ControlView
+    
+ 
  
  */
 
 struct SceneView: View {
     @StateObject var store = Store(update: SceneSnapshot.update, state: SceneSnapshot(), environment: Services())
-    
+    /*
+     
+        bindings
+            
+             sortBinding
+             editBinding
+             searchShowingBinding
+             filterShowingBinding
+          
+             deletingBinding
+             addingTagBinding
+             addingItemBinding
+          
+             listSearchBinding
+             detailSearchBinding
+          
+        subViews
+            - view (handles list, detail, focus)
+            - popover
+            - dialog
+     
+     
+        conveniences
+         
+            dialogOn: Bool
+            popoverOn: Bool
+         
+
+        controlContainer
+        contentContainer
+     */
+
+    @State var dragOffset: CGSize = .zero
+
     var body: some View {
-        return ZStack(alignment: .bottom) {
-            content
-            controlBar
-            // alert??
+        
+        ZStack(alignment: .bottom) {
+            view
+            if popoverOn {
+                popover
+            }
+            if dialogOn {
+                dialogContainer
+            }
         }
     }
 }
 
 extension SceneView {
-    var content: some View {
+    var view: some View {
+        ZStack(alignment: .bottom) {
+            contentContainer
+            controlContainer
+            // alert??
+        }
+        .background(RoundedRectangle(cornerRadius: 10.0).foregroundColor(.green).opacity(0.2))
+        .offset(y: popoverOn ? -20.0 : 0.0)
+        .rotation3DEffect(
+            Angle(degrees: popoverOn ? (20.0 - (20.0 * (self.dragOffset.height / 600))) : 0.0),
+                axis: (x: 1.0, y: 0.0, z: 0.0))
+        
+    }
+}
+
+extension SceneView {
+    var popover: some View {
+        
+            RoundedRectangle(cornerRadius: 10.0)
+            .onTapGesture {
+                store.send(.navigate(.popover(.none)))
+            }
+            .offset(y: self.dragOffset.height)
+            .gesture(DragGesture()
+                .onChanged{ change in
+                    if change.translation.height < 0 { return }
+                    self.dragOffset = change.translation
+                    print(self.dragOffset)
+                }
+                .onEnded { end in
+                    if self.dragOffset.height > 250 {
+                        store.send(.navigate(.popover(.none)))
+                    }
+                    withAnimation(.spring()) {
+                        self.dragOffset = .zero
+                    }
+                    // possibly dimiss
+                }
+            )
+            .frame(maxWidth: .infinity)
+            .edgesIgnoringSafeArea([.bottom])
+            .transition(.move(edge: .bottom))
+        }
+    
+}
+
+extension SceneView {
+    var dialogContainer: some View {
+        ZStack {
+                switch store.state.main {
+                case .list: EmptyView()
+                case .detail(let idx): EmptyView()
+            }
+ 
+        }
+    }
+}
+
+extension SceneView {
+    var contentContainer: some View {
         VStack {
-            switch store.state.focus {
+            switch store.state.main {
                 case .list:
                     NavigationBar(
-                                  route: store.state.focus,
+                                  route: store.state.main,
                                   tabs: store.state.tabs,
                                   goTo: {id in },
                                   goHome: {},
-                                  toggleNavExpanded: {}
+                                  toggleNavExpanded: { store.send(.navigate(.popover(.navExpand))) }
                     )
-                    // search, sort, filter
-                    // mode
-                ItemList(state: store.state.list)
+                    ItemList(state: store.state.list)
                     
                 case .detail(let idx):
-                    // search, sort, filter
-                    // mode
                     NavigationBar(
-                                  route: store.state.focus,
+                                  route: store.state.main,
                                   tabs: store.state.tabs,
                                   goTo: {id in },
                                   goHome: {},
                                   toggleNavExpanded: {}
                     )
                     ItemDetail(state: store.state.tabs[idx])
-                                   
-                
             }
             Spacer()
         }
@@ -66,11 +153,11 @@ extension SceneView {
 }
 
 extension SceneView {
-    var controlBar: some View {
+    var controlContainer: some View {
         VStack {
-        switch store.state.focus {
+        switch store.state.main {
             case .list:
-            if store.state.list.filtering {
+            if store.state.list.filters.count > 0 {
 //            filter: store.binding { state in
 //                 state.list.filters
 //             } tag: { newValue in
@@ -79,12 +166,12 @@ extension SceneView {
                 Text("Filtering")
             }
             if store.state.list.searching {
-                SearchField(text: listSearch)
+                SearchField(text: listSearchBinding)
             }
             if store.state.list.editing {
-                EditBar(deleteConfirm: deletingBinding,
-                        addTag: addingTagBinding,
-                        addItem: addingItemBinding,
+                EditBar(deleteConfirm: deletingDialog,
+                        addTag: addingTagPopover,
+                        addItem: addingItemPopover,
                         selectionCount: store.state.list.filters.count,
                         selectAll: {},
                         clearSelection: {})
@@ -95,7 +182,7 @@ extension SceneView {
                            filterShowing: filterShowingBinding)
             case .detail(let idx):
             
-            if store.state.list.filtering {
+            if store.state.tabs[idx].filters.count > 0 {
                         //filterPicker
 //                filter: store.binding { state in
 //                     state.tabs[idx].filters
@@ -105,14 +192,14 @@ extension SceneView {
                 Text("Filtering")
 
                 }
-            if store.state.list.searching {
-                SearchField(text: detailSearch(idx: idx))
+            if store.state.tabs[idx].searching {
+                SearchField(text: detailSearchBinding(idx: idx))
             }
             
-            if store.state.list.editing {
-                EditBar(deleteConfirm: deletingBinding(idx: idx),
-                        addTag: addingTagBinding(idx: idx),
-                        addItem: addingItemBinding(idx: idx),
+            if store.state.tabs[idx].editing {
+                EditBar(deleteConfirm: deletingDialog,
+                        addTag: addingTagPopover,
+                        addItem: addingItemPopover,
                         selectionCount: store.state.tabs[idx].filters.count,
                         selectAll: {},
                         clearSelection: {})
@@ -120,10 +207,10 @@ extension SceneView {
             
             }
                 ControlBar(
-                   sort:sortBinding(idx: idx),
-                   editing:editBinding(idx: idx),
-                   searchShowing:searchShowingBinding(idx: idx),
-                   filterShowing:filterShowingBinding(idx:idx)
+                   sort:sortMenu(idx: idx),
+                   editing:editMode(idx: idx),
+                   searchShowing:searchShowing(idx: idx),
+                   filterShowing:filterShowingPopover(idx:idx)
                 )
             }
         
@@ -143,19 +230,19 @@ extension SceneView {
 
 
 extension SceneView {
-    var listSearch: Binding<String> {
+    var listSearchBinding: Binding<String> {
         store.binding { state in
             state.list.search
         } tag: { newValue in
-                .state(.update(.search(newValue)))
+                .update(.searchText(newValue))
         }
     }
     
-    func detailSearch(idx: Int) -> Binding<String> {
+    func detailSearchBinding(idx: Int) -> Binding<String> {
         store.binding { state in
             state.tabs[idx].search
         } tag: { newValue in
-            .state(.update(.search(newValue)))
+            .update(.searchText(newValue))
         }
     }
 }
@@ -165,7 +252,7 @@ extension SceneView {
         store.binding { state in
             state.list.sort
         } tag: { newValue in
-                .state(.update(.sort(newValue))) //
+            .update(.sort(newValue)) //
         }
     }
 
@@ -173,21 +260,21 @@ extension SceneView {
         store.binding { state in
             state.list.editing
         } tag: { newValue in
-            .state(.toggle(.edit))
+            .update(.edit)
         }
     }
     var searchShowingBinding: Binding<Bool> {
         store.binding { state in
             state.list.searching
         } tag: { newValue in
-            .state(.toggle(.search))//
+            .update(.search)//
         }
     }
     var filterShowingBinding: Binding<Bool> {
         store.binding { state in
             state.list.filtering
         } tag: { newValue in
-            .state(.toggle(.filter))
+            .update(.filter)
         }
     }
     
@@ -201,50 +288,40 @@ extension SceneView {
 
 // list edit bar
 extension SceneView {
-    var deletingBinding: Binding<Bool> {
+    var deletingDialog: Binding<Bool> {
         store.binding { state in
-            switch state.list.subRoute {
-                case .none, .sheet(_): return false
-                case .alert(let alert):
-                    switch alert {
-                        case .deleteConfirm: return true
-                    }
-                }
+            switch state.dialog {
+            case .deleteConfirm: return true
+            default: return false
+            }
         } tag: { newValue in
             if newValue {
                 // set to this route
             } else {
                 // set route to none
             }
-            return .state(.null) //
+            return .null //
         }
     }
-    var addingTagBinding: Binding<Bool> {
+    var addingTagPopover: Binding<Bool> {
         store.binding { state in
-            switch state.list.subRoute {
-                case .none, .alert(_): return false
-                case .sheet(let sheet):
-                switch sheet {
-                    case .addTagToSelection: return true
-                    default: return false
-                }
-                }
-        } tag: { newValue in
-                .state(.null)
-        }
-    }
-    var addingItemBinding: Binding<Bool> {
-        store.binding { state in
-            switch state.list.subRoute {
-                case .none, .alert(_): return false
-                case .sheet(let sheet):
-                switch sheet {
-                    case .addItemToSelection: return true
-                    default: return false
-                }
+            switch state.popover {
+                case .addTagToSelection, .addTagToFilter: return true
+                default: return false
             }
         } tag: { newValue in
-                .state(.null)
+                .null
+        }
+    }
+    var addingItemPopover: Binding<Bool> {
+        store.binding { state in
+            switch state.popover {
+            case .addItemToSelection, .addItemToDetail: return true
+                default: return false
+            }
+            
+        } tag: { newValue in
+                .null
         }
     }
     
@@ -252,88 +329,61 @@ extension SceneView {
 
 // detail control bar
 extension SceneView {
-        func deletingBinding(idx: Int) -> Binding<Bool> {
-            store.binding { state in
-                switch state.tabs[idx].subRoute {
-                    case .none, .sheet(_): return false
-                    case .alert(let alert):
-                        switch alert {
-                            case .deleteConfirm: return true
-                        }
-                    }
-            } tag: { newValue in
-                if newValue {
-                    // set to this route
-                } else {
-                    // set route to none
-                }
-                return .state(.null) //
-            }
-        }
-                        
-        func addingTagBinding(idx: Int) -> Binding<Bool> {
-            store.binding { state in
-                switch state.tabs[idx].subRoute {
-                    case .none, .alert(_): return false
-                    case .sheet(let sheet):
-                    switch sheet {
-                        case .addTagToSelection: return true
-                        default: return false
-                    }
-                    }
-            } tag: { newValue in
-                    .state(.null)
-            }
-        }
-                        
-        func addingItemBinding(idx: Int) ->  Binding<Bool> {
-            store.binding { state in
-                switch state.tabs[idx].subRoute {
-                    case .none, .alert(_): return false
-                    case .sheet(let sheet):
-                    switch sheet {
-                        case .addItemToSelection: return true
-                        default: return false
-                    }
-                }
-            } tag: { newValue in
-                    .state(.null)
-            }
-        }
-}
-
-// detail control bar
-extension SceneView {
-    func sortBinding(idx: Int) -> Binding<Sort> {
+    func sortMenu(idx: Int) -> Binding<Sort> {
         store.binding { state in
             state.tabs[idx].sort
         } tag: { newValue in
-            .state(.update(.sort(newValue)))
+            .update(.sort(newValue))
         }
     }
 
-    func editBinding(idx: Int) ->  Binding<Bool> {
+    func editMode(idx: Int) ->  Binding<Bool> {
         store.binding { state in
             state.tabs[idx].editing
         } tag: { newValue in
-            .state(.toggle(.edit))
+            .update(.edit)
         }
     }
-    func searchShowingBinding(idx: Int) ->  Binding<Bool> {
+    func searchShowing(idx: Int) ->  Binding<Bool> {
         store.binding { state in
             state.tabs[idx].searching
         } tag: { newValue in
-            .state(.toggle(.search)) //
+            .update(.search) //
         }
     }
-    func filterShowingBinding(idx: Int) ->  Binding<Bool> {
+    func filterShowingPopover(idx: Int) ->  Binding<Bool> {
         store.binding { state in
             state.tabs[idx].filtering
         } tag: { newValue in
-            .state(.toggle(.filter))
+            .update(.filter)
         }
     }
 }
+
+extension SceneView {
+  var dialogOn: Bool {
+      if let _ = store.state.dialog {
+          return true
+      } else {
+          return false
+      }
+
+  }
+     
+  
+  var popoverOn: Bool {
+      if let _ = store.state.popover {
+          return true
+      } else {
+          return false
+      }
+  }
+  
+}
+          
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

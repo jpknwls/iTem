@@ -13,6 +13,9 @@ class Item: CoreStoreObject {
       @Field.Stored("updated")
       var updatedAt: Date = .init()
 
+      @Field.Stored("visited")
+      var visitedAt: Date = .init()
+
       @Field.Stored("id")
       var id: UUID = .init()
 

@@ -36,3 +36,7 @@ extension Color {
         return (Double(hue), Double(saturation), Double(brightness))
     }
 }
+
+extension Tag {
+    // bindings
+}

@@ -77,7 +77,7 @@ struct iTemApp: App {
             ItemPicker
             
             ConfirmDeleteDialog
-            AddItemDialog
+            
     
         
 

@@ -10,34 +10,9 @@ import CoreStore
 
 
 
-enum DetailSheet: Equatable {
-    case navExpand
-    case filterExpand
-    case selectionExpand
-    case addTagToFilter
-    case addTagToSelection
-    case addItemToSelection
-}
-
-enum DetailAlert: Equatable {
-    case deleteConfirm
-
-}
-
-enum DetailSubRoute: Equatable {
-    case none
-    case sheet(DetailSheet)
-    case alert(DetailAlert)
-}
-
-
-
 
 struct DetailContent: Equatable {
     let id: UUID?
-    
-    var subRoute: DetailSubRoute = .none
-    
     // passed to the view
     let objectPublisher: ObjectPublisher<Item>
     
@@ -49,4 +24,19 @@ struct DetailContent: Equatable {
     var filters: Set<Tag> = []
 
     // bindings?
+}
+
+struct ListContent: Equatable {
+
+    // listPublisher?
+    
+    var editing: Bool = false
+    var searching: Bool = false
+    var filtering: Bool = false
+    var filters: Set<Tag> = []
+    var search: String = ""
+    var sort: Sort = .none
+    
+    // bindings?
+    
 }

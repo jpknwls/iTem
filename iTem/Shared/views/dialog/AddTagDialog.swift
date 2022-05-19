@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct AddItemDialog: View {
+struct AddTagDialog: View {
     
     var body: some View { EmptyView() }
 }

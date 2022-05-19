@@ -9,39 +9,38 @@ import Foundation
 import SwiftUI
 
 enum Intents {
-    case db(DatabaseIntent)
-    case state(StateIntent)
-}
-
-enum StateIntent {
     case null
+    case db(DatabaseIntent)
     case select(SelectionAction)
-    case toggle(ToggleDestination)
     case update(UpdateDestination)
     case navigate(NavigationDestination)
 }
 
 enum UpdateDestination {
-    case search(String)
-    case sort(Sort)
-}
-
-enum ToggleDestination {
-    case search
     case edit
     case filter
-    
+    case search
+    case searchText(String)
+    case sort(Sort)
 }
 
 enum SelectionAction {
     case all
     case clear
+    case select(UUID)
+    case deselect(UUID)
 }
 
 enum NavigationDestination {
-    case back
-    case to(UUID) // or Item?
+    case back //go home
+    case left // move index one down or wrap around
+    case right // move index one up or wrap around
+    case to(UUID) // can open new tab or navigate to already open tab
+    case popover(Popover?) // can pass popover route to show, or nil to close
+    case dialog(Dialog?) // can pass dialog route to show, or nil to close
 }
+
+
 
 enum DatabaseIntent {
     case create(DatabaseCreate)
