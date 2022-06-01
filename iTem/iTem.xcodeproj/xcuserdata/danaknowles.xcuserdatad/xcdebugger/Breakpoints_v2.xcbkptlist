@@ -14,8 +14,8 @@
             filePath = "Shared/update/State.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "update(state:action:environment:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,10 +30,42 @@
             filePath = "Shared/update/State.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "SceneSnapshot"
             landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "F1CA9990-37A1-4036-B05A-F96099FA8122 - fb11f22aef4aa45a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iTem.SceneSnapshot.init() -&gt; iTem.SceneSnapshot"
+                  moduleName = "iTem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danaknowles/John/Personal/iTem/iTem/Shared/update/State.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "F1CA9990-37A1-4036-B05A-F96099FA8122 - 5199d80094d3c097"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iTem.SceneSnapshot.init(main: iTem.Route, popover: Swift.Optional&lt;iTem.Popover&gt;, dialog: Swift.Optional&lt;iTem.Dialog&gt;, tabs: Swift.Array&lt;iTem.DetailContent&gt;, list: iTem.ListContent) -&gt; iTem.SceneSnapshot"
+                  moduleName = "iTem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danaknowles/John/Personal/iTem/iTem/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "68">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

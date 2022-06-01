@@ -23,6 +23,18 @@ class Tag: CoreStoreObject{
 
    @Field.Relationship("tags", inverse: \.$tags)
    var items: Set<Item>
+    
+    var color: Color {
+        get {
+            Color(hue: hue, saturation: saturation, brightness: brightness)
+        }
+        set {
+            let (h, s, b) = newValue.hsb()
+            self.hue = h
+            self.brightness = b
+            self.saturation = s
+        }
+    }
 }
 
 extension Color {

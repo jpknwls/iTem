@@ -40,7 +40,7 @@ struct ItemListView: View {
         List {
                 ForEach(objectIn: items) { item in
                         // ...
-                    Text(item.text ?? "")
+                    //Text(item.text ?? "")
                 }
             }
         

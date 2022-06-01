@@ -11,6 +11,40 @@ import CoreStore
 
 /*
 
+    rebuild
+ 
+        we want to eventually integrate the mind-map style canvas for "Spaces"
+        first, we'll build out "Library" and "Focus"
+        
+        Library
+            data
+            - list of all items
+ 
+            features
+            - search
+            - filter
+            - sort
+            - select
+                - tag editing
+            - add
+            - focus -> focus
+ 
+        Focus
+            data
+            - single item
+ 
+ 
+            features
+            - text editing
+            - tag editing
+        ....
+ 
+        Space
+            data
+            - space
+ 
+ 
+ 
  models
     (tag)
             id: UUID
@@ -27,6 +61,7 @@ import CoreStore
             createdAt: Date
             updatedAt: Date
             visitedAt: Date
+             // url
             children: List<Item>
             parents: Set<Item>
             tags: Set<Tag>
@@ -88,6 +123,22 @@ import CoreStore
         search
         sort
  
+ 
+ flows
+    - add item
+        - create new item
+            - from bottom right in both list and detail view[
+        - open it as tab
+        - open focus view
+            - full screen text entry
+            - sheets for adding media links, item links, tag link
+        - if hit done and all fields are empty
+            -> delete, close tab and navigate to previous
+                (if adding to something, this should be passed in to display at the top. otherwise, go to list view)
+        -
+        
+ 
+    -
  
  routes + views
     (@ indicates a binding)

@@ -9,11 +9,19 @@ import Foundation
 
 
 enum Icon {
+    // tabs
+    static let selection = "squareshape.squareshape.dashed"
+    static let spaces = "square.stack"
+    static let space = "app"
+    static let items = "folder"
+    
+    
+
+
     // navbar
     static let home = "house"
     static let expand = "ellipsis.circle"
     // editbar
-    static let selection = "lasso"
     static let clear = "xmark.circle"
     static let delete = "trash"
     static let tag = "tag"
@@ -32,4 +40,7 @@ enum Icon {
     static let link = "link"
     static let image = "photo"
     static let video = "video"
+    
+    static let back = "arrow.left"
+    static let next = "arrow.right"
 }

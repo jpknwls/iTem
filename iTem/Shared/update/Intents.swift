@@ -8,6 +8,48 @@
 import Foundation
 import SwiftUI
 
+
+/*
+ flows
+    add
+        add Button -> beginAdding
+            AddPicker
+                createSpace ->
+                    add space to db
+                    open space as a new tab
+                createItem ->
+                    add item to db
+                    toggle -> whether to add to currently open space
+                    open item in a picker or editing context
+                    
+ 
+ 
+        media type buttons -> beginAddingType
+        pickers, capturers -> setAdd
+ 
+    filter
+        filter Button -> beginFiltering
+        updateFilter bindings -> updateFilter(.type(value))
+        close -> endFiltering
+            send signal to updatePredicate and reload view
+ 
+ 
+    search
+        search Textbox -> updateSearch
+            send this to a throttled service that produces new predicates
+        service -> updatePredicate -> reload view with new predicate (need dependency)
+ 
+ 
+    nav Bar
+        swipe left/right button -> nextSpace
+        swipe right/left button -> previousSpace
+        t
+ 
+ */
+
+
+
+
 enum Intents {
     case null
     case db(DatabaseIntent)

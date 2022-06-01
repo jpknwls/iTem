@@ -12,11 +12,24 @@ struct SearchField: View {
     @Binding var text: String
     var body: some View {
         TextField("Search...", text: $text)
-            .padding()
+            .padding(4)
             .foregroundColor(.green)
             .background(RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(.green)
-                            .opacity(0.3)
-                            .blur(radius: 1.0))
+                            .foregroundColor(.teal)
+                            .opacity(0.2)
+                            .blur(radius: 3.0))
+    }
+}
+
+struct SearchFieldV2: View {
+    @Binding var text: String
+    var body: some View {
+        TextField("Search",text: $text)
+            .padding(.vertical, 10)
+            .padding(.horizontal)
+            .background(BlurView(style: .dark))
+            .cornerRadius(10)
+            .colorScheme(.dark)
+            .padding(.top, 10)
     }
 }

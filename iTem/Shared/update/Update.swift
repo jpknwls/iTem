@@ -27,6 +27,55 @@ enum Sort {
  */
 
 
+
+extension SceneV2Snapshot {
+    /// State update function
+    static func update(
+        state: SceneV2Snapshot,
+        action: IntentsV2,
+        environment: Services
+    ) -> Update<SceneV2Snapshot, IntentsV2> {
+        switch action {
+        case .update(let action):
+            switch action {
+            case .search(let newSearch):
+                var copy = state
+                copy.searchText = newSearch
+                return Update(state: copy)
+            case .focus(let newFocus):
+                var copy = state
+                copy.focusOn = newFocus
+                return Update(state: copy)
+            case .tab(let tab):
+                var copy = state
+                withAnimation(.spring()) {
+                    copy.tabPosition = tab
+                }
+                return Update(state: copy)
+            default: return Update(state: state)
+            }
+            
+        default: return Update(state: state)
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 struct SceneSnapshot: Equatable {
     
     var main: Route = .list
@@ -36,6 +85,8 @@ struct SceneSnapshot: Equatable {
     var tabs: [DetailContent] = []
     var list: ListContent =  ListContent()
 }
+
+
 
 
 extension SceneSnapshot {
